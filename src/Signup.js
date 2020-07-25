@@ -11,8 +11,10 @@ const Signup = () => {
     function createUser() {
         if(userEmail && userPassword) {
             axios.post('https://fitr-backend.herokuapp.com/users', {
-                email: userEmail,
-                password: userPassword
+                user: {
+                    email: userEmail,
+                    password: userPassword
+                }
             })
             .then(setIsCreated(true))
         } else {
