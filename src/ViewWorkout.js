@@ -17,10 +17,8 @@ const ViewWorkout = (props) => {
             }   
         })
         .then(res => {
-            console.log(res.data)
             setWorkoutDate(res.data.date)
             setWorkout(res.data.exercises)
-            console.log(1)
         })
         .catch (e => 
             setErrorMessage("There was an error")
@@ -31,11 +29,6 @@ const ViewWorkout = (props) => {
     return (
         <>
             {errorMessage && <h3>{errorMessage}</h3>}
-            { 
-                    // <li>
-                    //      {workout.exercise} by {workout.user_id} on {workout.date}
-                    // </li> 
-            }
             <h2>{workoutDate}</h2>
             {workout}
             <br></br>
