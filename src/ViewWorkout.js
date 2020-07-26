@@ -11,7 +11,7 @@ const ViewWorkout = (props) => {
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU4MTIyODgsInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.XUgN6nGddjVU5Wex56gPvSuZlBk-rzkec6K_gSmdvGE'
     // ${props.workoutId}
     useEffect(() => {
-        axios.get(`https://fitr-backend.herokuapp.com/workouts/1`,{
+        axios.get(`https://fitr-backend.herokuapp.com/workouts/${props.workoutId}`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }   
