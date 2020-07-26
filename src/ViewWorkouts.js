@@ -1,14 +1,14 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
-// import DeleteWorkout from './DeleteWorkout'
-// import { AppContext } from './Login'
+import {Link, Redirect} from 'react-router-dom'
+
+
 
 const ViewWorkouts = ({jwt}) => {
 
     const [workouts, setWorkouts] = useState([])
     const [errorMessage, setErrorMessage]= useState("")
-    // const appContext = useContext(AppContext)
+    
 
     const token = {jwt}
 
@@ -31,17 +31,16 @@ const ViewWorkouts = ({jwt}) => {
 
     return (
         <div>
+            {!jwt && <Redirect to="/" />}
+            <h1>My workouts</h1>
             {errorMessage && <h3>{errorMessage}</h3>}
             {workouts.map((workout, index) => (
-                // console.log(workout.exercises)
-                // console.log(workout.date)
                 <>
                 <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
                 <li>{workout.exercises}</li>
                 </>
             ))}
 
-            this is text
         </div>
     )
 }

@@ -24,6 +24,7 @@ const Signup = () => {
 
     return (
         <div>
+        <h1>SIGNUP</h1>
         <div>{errorMessage}</div>
         <input
             placeholder="Email"
@@ -38,7 +39,7 @@ const Signup = () => {
             onChange={e => setPassword(e.target.value)}
         />
         <button onClick={createUser}> Signup </button>
-        {isCreated && <Redirect to="/" />}
+        {isCreated && <Redirect to="/Login" />}
     </div>
     )
 

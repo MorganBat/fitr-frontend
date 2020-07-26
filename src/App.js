@@ -11,6 +11,7 @@ const [userToken, setUserToken] = useState('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9
     return ( 
         <div>
             <BrowserRouter>
+            
             <Route exact path='/login' render={props => <Login onLogin={jwt => setUserToken(jwt)} />} />
             <Route exact path='/workouts' render={props => <ViewWorkouts jwt={userToken} />} />
             <Route exact path='/workouts/:id' render={props => <ViewWorkout workoutId={props.match.params.id} jwt={userToken}/> }/>

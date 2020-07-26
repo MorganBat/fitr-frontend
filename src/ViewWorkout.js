@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const ViewWorkout = (props) => {
 
@@ -28,7 +28,8 @@ const ViewWorkout = (props) => {
 
 
     return (
-        <>
+        <> 
+            {!props.jwt && <Redirect to="/" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
             {workout}

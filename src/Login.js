@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const Login = ({onLogin}) => {
     const [userEmail, setUserEmail]= useState("")
@@ -15,11 +15,6 @@ async function getToken() {
             password: userPassword, 
         }
     })
-    // .then(res => setUserToken(res.data.jwt),
-    //     onLogin(userToken),
-    //     setLoggedIn(true),
-    //     console.log(`jwt: ${userToken}`)
-    //     )
     .then(res => {
         onLogin(res.data.jwt)
         setLoggedIn(true)
@@ -41,6 +36,9 @@ return (
         onChange={e => setUserPassword(e.target.value)}
     />
     <button onClick={getToken}> Login </button>
+
+    <Link to="/signup">Register Now</Link>
+
     {loggedIn && <Redirect to="/workouts" />}
     </div>
 )
