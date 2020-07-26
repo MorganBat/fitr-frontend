@@ -30,24 +30,36 @@ const EditWorkout = ({workoutId}) => {
 
     function editWorkout() {
         axios.put(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
-            /*workout format*/},{
+            workout: {
+                exercises: workout,
+                date: workoutDate,
+                user: workoutUser
+            }    
+        }, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }   
             }
-        })
+        )
+        .then(setIsEdited(true))
     }
 
 return (
     <div>
         {errorMessage && <h3>{errorMessage}</h3>}
-        {
-            workout: {
-                exercises: "earaer",
-                date: "year-month-day",
-                user:
-            }
-        }
+        <input
+        placeholder="Exercises"
+        value={workout}
+        onChange={e => setWorkout(e.target.value)}
+    />
+    <input
+        placeholder="Date"
+        value={workoutDate}
+        onChange={e => setWorkoutDate(e.target.value)}
+    />
+    <button onClick={editWorkout}> Login </button>
+
+        {isEdited && <Redirect to="/" />}
     </div>
 )
 

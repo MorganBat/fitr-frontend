@@ -2,7 +2,7 @@ import react from 'react'
 import axios from 'axios'
 
 
-const DeleteWorkout = ({workoutId, onDelete}) => {
+const DeleteWorkout = ({workoutId}) => {
 
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU3ODYzNzksInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.MXeqITDxtZBZPkhVF0vhvNRZuVDzZnCRNs_VO3QK4lk'
 
@@ -12,7 +12,8 @@ const DeleteWorkout = ({workoutId, onDelete}) => {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then(onDelete())
+        .then()
+        .catch()
     }
 
 
