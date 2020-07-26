@@ -31,11 +31,15 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {errorMessage && <h3>{errorMessage}</h3>}
-            {console.log(workouts)}
-            {workouts.forEach(workout => {
-                console.log(workout.exercises)
-                console.log(workout.date)
-            })}
+            {workouts.map((workout, index) => (
+                // console.log(workout.exercises)
+                // console.log(workout.date)
+                <>
+                <li>{workout.exercises}</li>
+                <li>{workout.date}</li>
+                </>
+            ))}
+
             this is text
         </div>
     )
