@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 // import DeleteWorkout from './DeleteWorkout'
 // import { AppContext } from './Login'
 
@@ -10,24 +10,18 @@ const ViewWorkouts = ({jwt}) => {
     const [errorMessage, setErrorMessage]= useState("")
     // const appContext = useContext(AppContext)
 
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU3ODYzNzksInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.MXeqITDxtZBZPkhVF0vhvNRZuVDzZnCRNs_VO3QK4lk'
+    const token = {jwt}
 
     useEffect(() => {
         axios.get(
             `https://fitr-backend.herokuapp.com/workouts`,{
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token.jwt}`
             }    
         })
         .then(res => {
-
-            res.data.forEach(e => {
-                console.log(e["date"]);
-                // console.log(workouts)
-                // setWorkouts(workouts.concat(e["date"]))
-                setWorkouts([e["date"]]);
-                console.log(workouts)
-            }) 
+            setWorkouts(res.data)
+            // console.log(res.data)
         })
         .catch (e => 
             setErrorMessage("There was an error")
@@ -38,14 +32,15 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {errorMessage && <h3>{errorMessage}</h3>}
-            {/* {console.log(workouts[3])} */}
+            {workouts.map((workout, index) => (
+                // console.log(workout.exercises)
+                // console.log(workout.date)
+                <>
+                <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
+                <li>{workout.exercises}</li>
+                </>
+            ))}
 
-            {/* {workouts.map(
-                    (w, i) => (
-                    <li key={`${w}-${i}`}>{w}</li>
-                    )
-                )
-            } */}
             this is text
         </div>
     )

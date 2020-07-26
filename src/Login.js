@@ -3,23 +3,27 @@ import axios from 'axios'
 import {Redirect} from 'react-router-dom'
 
 const Login = ({onLogin}) => {
-    const [userEmail, setEmail]= useState("")
-    const [userPassword, setPassword] = useState("")
-    const [userToken, setJWT] = useState("")
+    const [userEmail, setUserEmail]= useState("")
+    const [userPassword, setUserPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
 
 
-function getToken() {
-    axios.post('https://fitr-backend.herokuapp.com/user_token',{
+async function getToken() {
+    await axios.post('https://fitr-backend.herokuapp.com/user_token',{
         auth: {
             email: userEmail,
             password: userPassword, 
         }
     })
-    .then(res => setJWT(res.data.jwt),
-        onLogin(userToken),
+    // .then(res => setUserToken(res.data.jwt),
+    //     onLogin(userToken),
+    //     setLoggedIn(true),
+    //     console.log(`jwt: ${userToken}`)
+    //     )
+    .then(res => {
+        onLogin(res.data.jwt)
         setLoggedIn(true)
-        )
+    })
 }
 
 return (
@@ -28,12 +32,13 @@ return (
     <input
         placeholder="Email"
         value={userEmail}
-        onChange={e => setEmail(e.target.value)}
+        onChange={e => setUserEmail(e.target.value)}
     />
     <input
+        type="password"
         placeholder="Password"
         value={userPassword}
-        onChange={e => setPassword(e.target.value)}
+        onChange={e => setUserPassword(e.target.value)}
     />
     <button onClick={getToken}> Login </button>
     {loggedIn && <Redirect to="/workouts" />}
