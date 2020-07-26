@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
-// import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 // import DeleteWorkout from './DeleteWorkout'
 // import { AppContext } from './Login'
 
@@ -21,6 +21,7 @@ const ViewWorkouts = ({jwt}) => {
         })
         .then(res => {
             setWorkouts(res.data)
+            console.log(res.data)
         })
         .catch (e => 
             setErrorMessage("There was an error")
@@ -35,8 +36,9 @@ const ViewWorkouts = ({jwt}) => {
                 // console.log(workout.exercises)
                 // console.log(workout.date)
                 <>
+                <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
                 <li>{workout.exercises}</li>
-                <li>{workout.date}</li>
+                {console.log(workout.id)}
                 </>
             ))}
 
