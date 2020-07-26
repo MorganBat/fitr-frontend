@@ -21,7 +21,7 @@ const ViewWorkouts = ({jwt}) => {
         })
         .then(res => {
             setWorkouts(res.data)
-            console.log(res.data)
+            // console.log(res.data)
         })
         .catch (e => 
             setErrorMessage("There was an error")
@@ -38,7 +38,6 @@ const ViewWorkouts = ({jwt}) => {
                 <>
                 <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
                 <li>{workout.exercises}</li>
-                {console.log(workout.id)}
                 </>
             ))}
 

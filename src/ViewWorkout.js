@@ -8,7 +8,8 @@ const ViewWorkout = (props) => {
     const [workoutDate, setWorkoutDate] = useState([])
     const [errorMessage, setErrorMessage]= useState("")
 
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU4MTIyODgsInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.XUgN6nGddjVU5Wex56gPvSuZlBk-rzkec6K_gSmdvGE'
+    const token = props.jwt
+
     // ${props.workoutId}
     useEffect(() => {
         axios.get(`https://fitr-backend.herokuapp.com/workouts/${props.workoutId}`,{
@@ -33,7 +34,7 @@ const ViewWorkout = (props) => {
             {workout}
             <br></br>
             {/* <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link> */}
-            <Link to="/">View all</Link>
+            <Link to="/workouts">View all</Link>
         </>
     )
 }

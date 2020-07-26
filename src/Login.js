@@ -5,7 +5,6 @@ import {Redirect} from 'react-router-dom'
 const Login = ({onLogin}) => {
     const [userEmail, setUserEmail]= useState("")
     const [userPassword, setUserPassword] = useState("")
-    const [userToken, setUserToken] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
 
 
@@ -16,11 +15,15 @@ async function getToken() {
             password: userPassword, 
         }
     })
-    .then(res => setUserToken(res.data.jwt),
-        onLogin(userToken),
-        setLoggedIn(true),
-        console.log(`jwt: ${userToken}`)
-        )
+    // .then(res => setUserToken(res.data.jwt),
+    //     onLogin(userToken),
+    //     setLoggedIn(true),
+    //     console.log(`jwt: ${userToken}`)
+    //     )
+    .then(res => {
+        onLogin(res.data.jwt)
+        setLoggedIn(true)
+    })
 }
 
 return (
