@@ -31,7 +31,6 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {errorMessage && <h3>{errorMessage}</h3>}
-
             {workouts.map((workout, index) => (
                 // console.log(workout.exercises)
                 // console.log(workout.date)
