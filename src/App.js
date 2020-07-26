@@ -6,13 +6,13 @@ import ViewWorkout from './ViewWorkout'
 
 const App = () => {
 
-const [userToken, setUserToken] = useState(null)
+const [userToken, setUserToken] = useState('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU4MTczMDMsInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.jZhseYCIbHpGK6GgVAZ-4s2nQzydJuJZhTWPJhHT35A')
     return ( 
         <div>
             <BrowserRouter>
             <Route exact path='/login' render={props => <Login onLogin={jwt => setUserToken(jwt)} />} />
             <Route exact path='/workouts' render={props => <ViewWorkouts jwt={userToken} />} />
-            <Route exact path='/workouts/:id' render={props => <ViewWorkout workoutId={props.match.params.id}/> }/>
+            <Route exact path='/workouts/:id' render={props => <ViewWorkout workoutId={props.match.params.id} jwt={userToken}/> }/>
             </BrowserRouter>
         </div>
     )
