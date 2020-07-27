@@ -23,14 +23,25 @@ const CreateWorkout = ({jwt}) => {
 
     function addExercise() {
         setExercises([...exercise, ""])
+        setRepsWeights([...repsWeights, ""])
       }
     
-      function handleChange(e, index) {
+      function handleExerciseChange(e, index) {
         exercise[index] = e.target.value
         setExercises([...exercise])
       }
     
-      function handleRemove(index){
+      function handleRepsWeightsChange(e, index) {
+        exercise[index] = e.target.value
+        setExercises([...exercise])
+      }
+    
+      function handleExerciseRemove(index){
+        exercise.splice(index, 1)
+        setExercises([...exercise])
+      }
+    
+      function RepsWeightsRemove(index){
         exercise.splice(index, 1)
         setExercises([...exercise])
       }
@@ -46,8 +57,16 @@ const CreateWorkout = ({jwt}) => {
             {exercise.map((ex,index) =>(
                 <>
                 <div key={index}>
-                  <input type="text" onChange={(e) => handleChange(e, index) } value={ex}/>
-                  <button onClick={() => handleRemove(index)}>Remove</button>
+                  <input type="text" onChange={(e) => handleExerciseChange(e, index) } value={ex}/>
+                  <button onClick={() => handleExerciseRemove(index)}>Remove</button>
+                  
+                    {repsWeights.map((rep, index) => (
+                      <>
+                      <input type="number" value="reps"/>
+                      <input type="number" value="weight"/>
+                      </>
+                    ))}
+    
                 </div>
                 </>
              ))}
@@ -60,7 +79,6 @@ const CreateWorkout = ({jwt}) => {
           <button>Submit</button>
         </div>
       );
-
 }
 
 export default CreateWorkout
