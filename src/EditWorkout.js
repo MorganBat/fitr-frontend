@@ -10,8 +10,6 @@ const EditWorkout = ({workoutId, jwt}) => {
     const [isEdited, setIsEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
-    
-
     const token = jwt
 
     useEffect(() => {
