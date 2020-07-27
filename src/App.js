@@ -9,7 +9,7 @@ import Signup from './Signup'
 const App = () => {
 
     // Token is only set to make testing easier. For deployment change the default state to null.
-    const [userToken, setUserToken] = useState('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU4MTczMDMsInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.jZhseYCIbHpGK6GgVAZ-4s2nQzydJuJZhTWPJhHT35A')
+    const [userToken, setUserToken] = useState('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5MDE2MDYsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.fTrT-MfP-DsfENRBCrYMyOeC7sh5eb9BnA_lGWDLTT0')
     
     return ( 
         <div>

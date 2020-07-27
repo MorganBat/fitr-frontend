@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const EditWorkout = ({workoutId, jwt}) => {
 
@@ -57,7 +57,8 @@ return (
         value={workoutDate}
         onChange={e => setWorkoutDate(e.target.value)}
     />
-    <button onClick={editWorkout}> Login </button>
+    <button onClick={editWorkout}> Submit </button>
+    <Link to={`/workouts/${workoutId}`}>Back</Link>
 
         {isEdited && <Redirect to="/" />}
     </div>

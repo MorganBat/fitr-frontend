@@ -35,7 +35,7 @@ const ViewWorkout = (props) => {
             <h2>{workoutDate}</h2>
             {workout}
             <br></br>
-            {/* <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link> */}
+            <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link>
             <DeleteWorkout workoutId={props.workoutId}/>
             <Link to="/workouts">View all</Link>
         </>
