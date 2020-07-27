@@ -30,7 +30,7 @@ const ViewWorkout = (props) => {
 
     return (
         <> 
-            {!props.jwt && <Redirect to="/" />}
+            {!props.jwt && <Redirect to="/Login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
             {workout}
