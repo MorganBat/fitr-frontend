@@ -3,7 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom'
 import Login from './Login'
 import ViewWorkouts from './ViewWorkouts'
 import ViewWorkout from './ViewWorkout'
-import EditWorkout from './editWorkout'
+import EditWorkout from './EditWorkout'
 import Signup from './Signup'
 
 const App = () => {

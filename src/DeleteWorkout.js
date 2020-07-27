@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
 
 const DeleteWorkout = ({workoutId, jwt}) => {
 
@@ -17,8 +18,10 @@ const DeleteWorkout = ({workoutId, jwt}) => {
 
 
     return (
+        <div>
         <button onClick={DeleteWorkout}> Delete </button>
-       
+        {isDeleted && <Redirect to="/workouts" />}
+        </div>
     )
 }
 
