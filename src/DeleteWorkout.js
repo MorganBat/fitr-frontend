@@ -5,7 +5,7 @@ import {Redirect} from 'react-router-dom'
 const DeleteWorkout = ({workoutId, jwt}) => {
 
     const [isDeleted, setIsDeleted] = useState(false)
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU3ODYzNzksInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.MXeqITDxtZBZPkhVF0vhvNRZuVDzZnCRNs_VO3QK4lk'
+    const token = jwt
 
     function DeleteWorkout() {
         axios.delete(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`, {
@@ -26,4 +26,3 @@ const DeleteWorkout = ({workoutId, jwt}) => {
 }
 
 export default DeleteWorkout
-
