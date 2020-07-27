@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+
+const Signup = () => {
 
 const [userEmail, setEmail] = useState("")
 const [userPassword, setPassword] = useState("")
 const [isCreated, setIsCreated] = useState(false)
 const [errorMessage, setErrorMessage] = useState("")
-
-const Signup = () => {
 
     function createUser() {
         if(userEmail && userPassword) {

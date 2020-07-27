@@ -1,9 +1,9 @@
-import react from 'react'
+import React, {useState} from 'react'
 import axios from 'axios'
 
+const DeleteWorkout = ({workoutId, jwt}) => {
 
-const DeleteWorkout = ({workoutId}) => {
-
+    const [isDeleted, setIsDeleted] = useState(false)
     const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU3ODYzNzksInN1YiI6MSwiZW1haWwiOiJ0ZXN0MUBnbWFpbC5jb20ifQ.MXeqITDxtZBZPkhVF0vhvNRZuVDzZnCRNs_VO3QK4lk'
 
     function DeleteWorkout() {
@@ -12,13 +12,13 @@ const DeleteWorkout = ({workoutId}) => {
                 'Authorization': `Bearer ${token}`
             }
         })
-        .then()
-        .catch()
+        .then(setIsDeleted(true))
     }
 
 
     return (
         <button onClick={DeleteWorkout}> Delete </button>
+       
     )
 }
 
