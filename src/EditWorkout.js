@@ -50,17 +50,32 @@ import {Link, Redirect} from 'react-router-dom'
 return (
     <div>
         {errorMessage && <h3>{errorMessage}</h3>}
-        {/* <input
-            placeholder="Exercises"
-            value={workoutExercises}
-            onChange={e => setWorkoutExercises(e.target.value)}
-        /> */}
-        {console.log(workoutExercises)}
         <input
             placeholder="Date"
             value={workoutDate}
             onChange={e => setWorkoutDate(e.target.value)}
         />
+        {Object.keys(workoutExercises).map((item, i) => (
+            <div className="exercise" key={i}>
+                {item}:
+                {workoutExercises[`${item}`].map((repsAndWeights) => {
+                    let reps = String(repsAndWeights[0])
+                    let weight = String(repsAndWeights[1])
+                    console.log(reps)
+                    return(<li classname="repsAndWeights">
+                                                
+                        <input
+                            value={reps}
+                        />
+                        
+                        <input
+                            value={weight}
+                        />
+                        
+                    </li>)
+                })}
+            </div>
+        ))}
 
         <button onClick={editWorkout}> Submit </button>
         <Link to={`/workouts/${workoutId}`}>Back</Link>
