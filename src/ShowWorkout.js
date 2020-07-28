@@ -23,25 +23,31 @@ const ShowWorkout = (props) => {
         })
         .then(res => {
             setWorkoutDate(res.data.date)
-            setWorkout(res.data.exercises)
+            setWorkout(JSON.parse(res.data.exercises))
         })
         .catch (e => 
             setErrorMessage("There was an error")
             )
     },[])
 
-    function mapWorkout(workout){
-        "Test"
-        console.log("test")
-    }
-
-
     return (
         <> 
             {!props.jwt && <Redirect to="/Login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
-            {mapWorkout}
+            {Object.keys(workout).map((item, i) => (
+                <div className="exercise" key={i}>
+                    {item}:
+                    {/* {workout[`${item}`].map((repsAndWeights) => {
+                        let reps = String(repsAndWeights[0])
+                        // let weight = String(repsAndWeights[1])
+                        // console.log(reps)
+                        // <div classname="repsAndWeights">
+                        //     {reps}
+                        // </div>
+                    })} */}
+                </div>
+            ))}
             <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link>
             <DeleteWorkout workoutId={props.workoutId}/>
             <Link to="/workouts">View all</Link>

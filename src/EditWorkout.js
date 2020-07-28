@@ -14,7 +14,7 @@ import {Link, Redirect} from 'react-router-dom'
 
     // const token = jwt
     // Changed to static token for development. Change back before deploying!!!
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5MTQ4ODIsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.xwz-p0VIaBHbHTSfuSv2SvCgV0lglvJ-JMXyu_LEvVE'
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5ODM4MTUsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.g4ANyizPCelLo2rjQjzdkW69TtlekKkLgVeWxdzps1E'
 
     useEffect(() => {
         axios.get(`http://localhost:3001/workouts/${workoutId}`, {
@@ -24,9 +24,7 @@ import {Link, Redirect} from 'react-router-dom'
         })
         .then(res => {
             setWorkoutDate(res.data.date)
-            setWorkoutExercises(res.data.exercises)
-            console.log(workoutExercises)
-            setWorkoutUser(res.data.user)
+            setWorkoutExercises(JSON.parse(res.data.exercises))
         })
         .catch(e => {
             setErrorMessage("el problemo")
@@ -57,7 +55,7 @@ return (
             value={workoutExercises}
             onChange={e => setWorkoutExercises(e.target.value)}
         /> */}
-        {workoutExercises}
+        {console.log(workoutExercises)}
         <input
             placeholder="Date"
             value={workoutDate}
