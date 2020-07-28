@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import DeleteWorkout from './DeleteWorkout'
 
-const ViewWorkout = (props) => {
+const ShowWorkout = (props) => {
 
     const [workout, setWorkout] = useState('')
     const [workoutDate, setWorkoutDate] = useState('')
@@ -11,28 +11,29 @@ const ViewWorkout = (props) => {
 
     // Changed token to static for testing and development purposes. Change back when deploying!!!
     // const token = jwt
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5MzA3NDAsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.eK8s8VqcmOENO_dUNeiUcElU1AMtfRNyWgXX-PjUGOU'
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5ODM4MTUsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.g4ANyizPCelLo2rjQjzdkW69TtlekKkLgVeWxdzps1E'
 
     // ${props.workoutId}
     useEffect(() => {
+        // Changed location of request for testing purposes
         axios.get(`http://localhost:3001/workouts/${props.workoutId}`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }   
         })
         .then(res => {
-            console.log(res.data.date)
             setWorkoutDate(res.data.date)
-            console.log(res.data.exercises)
             setWorkout(res.data.exercises)
-            // console.log(JSON.parse(res.data.exercises))
-            console.log({workout})
-            console.log({workoutDate})
         })
         .catch (e => 
             setErrorMessage("There was an error")
             )
     },[])
+
+    function mapWorkout(workout){
+        "Test"
+        console.log("test")
+    }
 
 
     return (
@@ -40,8 +41,7 @@ const ViewWorkout = (props) => {
             {!props.jwt && <Redirect to="/Login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
-            {workout}
-            <br></br>
+            {mapWorkout}
             <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link>
             <DeleteWorkout workoutId={props.workoutId}/>
             <Link to="/workouts">View all</Link>
@@ -49,4 +49,4 @@ const ViewWorkout = (props) => {
     )
 }
 
-export default ViewWorkout
+export default ShowWorkout
