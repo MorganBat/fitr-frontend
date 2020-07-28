@@ -9,9 +9,7 @@ const ShowWorkout = (props) => {
     const [workoutDate, setWorkoutDate] = useState('')
     const [errorMessage, setErrorMessage]= useState('')
 
-    // Changed token to static for testing and development purposes. Change back when deploying!!!
-    // const token = jwt
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5ODM4MTUsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.g4ANyizPCelLo2rjQjzdkW69TtlekKkLgVeWxdzps1E'
+    const token = jwt
 
     // ${props.workoutId}
     useEffect(() => {
