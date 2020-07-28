@@ -38,14 +38,15 @@ const ShowWorkout = (props) => {
             {Object.keys(workout).map((item, i) => (
                 <div className="exercise" key={i}>
                     {item}:
-                    {/* {workout[`${item}`].map((repsAndWeights) => {
+                     {workout[`${item}`].map((repsAndWeights) => {
                         let reps = String(repsAndWeights[0])
-                        // let weight = String(repsAndWeights[1])
-                        // console.log(reps)
-                        // <div classname="repsAndWeights">
-                        //     {reps}
-                        // </div>
-                    })} */}
+                        let weight = String(repsAndWeights[1])
+                        console.log(reps)
+                        return(<div classname="repsAndWeights">
+                            {reps} reps,
+                            {weight} kg
+                        </div>)
+                    })}
                 </div>
             ))}
             <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link>
