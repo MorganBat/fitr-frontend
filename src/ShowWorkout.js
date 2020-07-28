@@ -42,10 +42,9 @@ const ShowWorkout = (props) => {
                         let reps = String(repsAndWeights[0])
                         let weight = String(repsAndWeights[1])
                         console.log(reps)
-                        return(<div classname="repsAndWeights">
-                            {reps} reps,
-                            {weight} kg
-                        </div>)
+                        return(<li classname="repsAndWeights">
+                            {reps} reps, {weight} kg
+                        </li>)
                     })}
                 </div>
             ))}
