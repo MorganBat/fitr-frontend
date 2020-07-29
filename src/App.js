@@ -7,7 +7,6 @@ import EditWorkout from './EditWorkout'
 import Signup from './Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
-import { format } from 'date-fns'
 
 const App = () => {
 

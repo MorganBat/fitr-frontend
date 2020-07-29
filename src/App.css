@@ -7,3 +7,19 @@ body {
 h1 {
     color:#36A7FF;
 }
+
+h2 {
+    color: #36A7FF
+}
+
+.showExercises {
+
+}
+
+.repsAndWeights {
+    
+}
+
+.navLinks {
+    display: flex;
+}

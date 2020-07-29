@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
+import { format } from 'date-fns'
 
 const EditWorkout = ({workoutId, jwt}) => {
 
@@ -43,7 +44,7 @@ const EditWorkout = ({workoutId, jwt}) => {
         )
         .then(
             setIsEdited(true),
-            console.log(workoutExercises),
+
         )
     }
 
@@ -88,9 +89,11 @@ return (
                 })}
             </div>
         ))}
-        <button onClick={editWorkout}> Submit </button>
-        <Link to={`/workouts/${workoutId}`}>Back</Link>
-        {isEdited && <Redirect to="/" />}
+        <div className="navLinks">
+            <button onClick={editWorkout} class="btn btn-success"> Submit </button>
+            <Link to={`/workouts/${workoutId}`}><button class="btn btn-light">Back</button></Link>
+        </div>
+        {isEdited && <Redirect to={`/workouts/${workoutId}`} />}
     </div>
 )
 
