@@ -14,7 +14,7 @@ import {Link, Redirect} from 'react-router-dom'
 
     // const token = jwt
     // Changed to static token for development. Change back before deploying!!!
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTU5ODM4MTUsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.g4ANyizPCelLo2rjQjzdkW69TtlekKkLgVeWxdzps1E'
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNjg3MTEsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.CO610caidLmrezYPjcDfl_56b1ThNvn5VwOBtcAznCs'
 
     useEffect(() => {
         axios.get(`http://localhost:3001/workouts/${workoutId}`, {
@@ -32,11 +32,12 @@ import {Link, Redirect} from 'react-router-dom'
     }, [])
 
     function editWorkout() {
-        axios.put(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
+        axios.put(`http://localhost:3001/workouts/${workoutId}`,{
             workout: {
                 exercises: workoutExercises,
                 date: workoutDate,
-                user: workoutUser
+                user_id: workoutUser,
+                id: workoutId,
             }    
         }, {
                 headers: {
@@ -44,7 +45,10 @@ import {Link, Redirect} from 'react-router-dom'
                 }   
             }
         )
-        .then(setIsEdited(true))
+        .then(
+            setIsEdited(true),
+            console.log(workoutExercises),
+        )
     }
 
 return (
@@ -52,33 +56,60 @@ return (
         {errorMessage && <h3>{errorMessage}</h3>}
         <input
             placeholder="Date"
+            type="date"
             value={workoutDate}
             onChange={e => setWorkoutDate(e.target.value)}
         />
         {Object.keys(workoutExercises).map((item, i) => (
             <div className="exercise" key={i}>
                 {item}:
-                {workoutExercises[`${item}`].map((repsAndWeights) => {
+                {workoutExercises[`${item}`].map((repsAndWeights, j) => {
                     let reps = String(repsAndWeights[0])
                     let weight = String(repsAndWeights[1])
-                    console.log(reps)
-                    return(<li classname="repsAndWeights">
-                                                
+                    return(<div className="repsAndWeights">
+                        {/* Below line to be removed before deployment. For dev purposes */}
+                        {/* item = {item}, 
+                        j = {j} */}
                         <input
                             value={reps}
-                        />
-                        
+                            size="2"
+                            // type="number"
+                            onChange={e => {
+                                const newWorkoutExercises = {...workoutExercises}
+                                newWorkoutExercises[item][j][0] = parseInt(e.target.value)
+                                setWorkoutExercises(newWorkoutExercises)
+                            }}                            
+                        />reps(index 0)                  
                         <input
                             value={weight}
-                        />
-                        
-                    </li>)
+                            size="3"
+                            // type="number"
+                            onChange={e => {
+                                const newWorkoutExercises = {...workoutExercises}
+                                newWorkoutExercises[item][j][1] = parseInt(e.target.value)
+                                setWorkoutExercises(newWorkoutExercises)
+                                console.log(workoutExercises)
+                            }}
+                        />kg(index 1)
+                    </div>)
                 })}
             </div>
         ))}
-
         <button onClick={editWorkout}> Submit </button>
         <Link to={`/workouts/${workoutId}`}>Back</Link>
+        {Object.keys(workoutExercises).map((item, i) => (
+                <div className="exercise" key={i}>
+                    {item}:
+                     {workoutExercises[`${item}`].map((repsAndWeights) => {
+                        let reps = String(repsAndWeights[0])
+                        let weight = String(repsAndWeights[1])
+                        console.log(reps)
+                        return(<li className="repsAndWeights">
+                            {reps} reps, {weight} kg
+                        </li>)
+                    })}
+                </div>
+            ))}
 
         {isEdited && <Redirect to="/" />}
     </div>
