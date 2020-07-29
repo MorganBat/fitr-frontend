@@ -38,7 +38,7 @@ const ViewWorkouts = ({jwt}) => {
             {workouts.map((workout, index) => (
                 <>
                 <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
-                <li>{workout.exercises}</li>
+                {/* <li>{Object.keys(workout.exercises)}</li> */}
                 </>
             ))}
 

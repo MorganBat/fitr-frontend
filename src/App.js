@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
-import Login from './components/Login'
-import ViewWorkouts from './components/ViewWorkouts'
-import ShowWorkout from './components/ShowWorkout'
-import EditWorkout from './components/EditWorkout'
-import Signup from './components/Signup'
+import Login from './Login'
+import ViewWorkouts from './ViewWorkouts'
+import ShowWorkout from './ShowWorkout'
+import EditWorkout from './EditWorkout'
+import Signup from './Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './components/App.css'
+import './App.css'
+import { format } from 'date-fns'
 
 const App = () => {
 
