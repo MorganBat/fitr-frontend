@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
-import exerciseList from '../public/exerciseList'
+import exerciseList from './resources/exerciseList'
 
 function CreateWorkout({jwt}) {
 
@@ -15,45 +15,50 @@ function CreateWorkout({jwt}) {
     setRepsWeights([...repsWeights, [[0,0],[0,0],[0,0],[0,0]]])
   }
   function handleAddRep(index) {
-    repsWeights[index].push([0,0])
-    setRepsWeights([...repsWeights])
+    const newRepsWeights = [...repsWeights]
+    newRepsWeights[index].push([0,0])
+    setRepsWeights([...newRepsWeights])
   }
 
   function handleExerciseChange(e, index) {
-    exercise[index] = e.target.value
-    setExercises([...exercise])
+    const newExercise = [...exercise]
+    newExercise[index] = e.target.value
+    setExercises([...newExercise])
   }
 
   function handleRepChange(e, exIndex, repIndex) {
+    const newRepsWeights = [...repsWeights]
     if(e.target.value !== "") {
-      repsWeights[exIndex][repIndex][0] = parseInt(e.target.value)
+      newRepsWeights[exIndex][repIndex][0] = parseInt(e.target.value)
     } else {
-      repsWeights[exIndex][repIndex][0] = 0
+      newRepsWeights[exIndex][repIndex][0] = 0
     }
-    setRepsWeights([...repsWeights])
+    setRepsWeights([...newRepsWeights])
   }
 
   function handleWeightChange(e, exIndex, repIndex) {
+    const newRepsWeights = [...repsWeights]
     if(e.target.value !== "") { 
-      repsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
+      newRepsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
     } else {
-     repsWeights[exIndex][repIndex][0] = 0
+     newRepsWeights[exIndex][repIndex][0] = 0
     }
-    setRepsWeights([...repsWeights])
+    setRepsWeights([...newRepsWeights])
   }
 
   function handleExerciseRemove(index){
-    exercise.splice(index, 1)
-    repsWeights.splice(index, 1)
-    setRepsWeights([...repsWeights])
-    setExercises([...exercise])
+    const newExercise = [...exercise]
+    const newRepsWeights = [...repsWeights]
+    newExercise.splice(index, 1)
+    newRepsWeights.splice(index, 1)
+    setRepsWeights([...newRepsWeights])
+    setExercises([...newExercise])
   }
 
   function handleRepRemove(exIndex){
-    // repsWeights[exIndex][repIndex]
-    // setExercises([...repsWeights])
-    repsWeights[exIndex].splice(repsWeights[exIndex].length - 1, 1)
-    setRepsWeights([...repsWeights])
+    const newRepsWeights = [...repsWeights]
+    newRepsWeights[exIndex].splice(newRepsWeights[exIndex].length - 1, 1)
+    setRepsWeights([...newRepsWeights])
   }
 
   function handleSubmit(){
@@ -85,10 +90,16 @@ function CreateWorkout({jwt}) {
   return (
     <div>
       <h1>Record a workout</h1>
+      {errorMessage && <h3>{errorMessage}</h3>}
         {exercise.map((ex,exIndex) =>(
             <>
             <div key={exIndex}>
-              <input type="text" onChange={(e) => handleExerciseChange(e, exIndex) } value={ex}/>
+              
+              <select onChange={(e) => handleExerciseChange(e, exIndex) }>
+                <option></option>
+                {allExercises.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
+              </select>
+
               <button onClick={() => handleExerciseRemove(exIndex)}>Remove</button>
               
                 {repsWeights[exIndex].map((rep, repIndex) => (
@@ -110,7 +121,7 @@ function CreateWorkout({jwt}) {
       <hr/>
 
       <button onClick={handleSubmit}>Submit</button>
-      {isCreated && <Redirect to="/"/>}
+      {/* {isCreated && <Redirect to="/"/>} */}
     </div>
   );
 }
