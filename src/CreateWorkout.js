@@ -1,19 +1,21 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
+import exerciseList from '../public/exerciseList'
 
 function CreateWorkout({jwt}) {
 
   const [exercise, setExercises] = useState([])
   const [repsWeights, setRepsWeights] = useState([])
   const [isCreated, setIsCreated] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
 
   function addExercise() {
     setExercises([...exercise, ""])
-    setRepsWeights([...repsWeights, [["",""],["",""],["",""],["",""]]])
+    setRepsWeights([...repsWeights, [[0,0],[0,0],[0,0],[0,0]]])
   }
   function handleAddRep(index) {
-    repsWeights[index].push(["",""])
+    repsWeights[index].push([0,0])
     setRepsWeights([...repsWeights])
   }
 
@@ -23,12 +25,20 @@ function CreateWorkout({jwt}) {
   }
 
   function handleRepChange(e, exIndex, repIndex) {
-    repsWeights[exIndex][repIndex][0] = parseInt(e.target.value)
+    if(e.target.value !== "") {
+      repsWeights[exIndex][repIndex][0] = parseInt(e.target.value)
+    } else {
+      repsWeights[exIndex][repIndex][0] = 0
+    }
     setRepsWeights([...repsWeights])
   }
 
   function handleWeightChange(e, exIndex, repIndex) {
-    repsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
+    if(e.target.value !== "") { 
+      repsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
+    } else {
+     repsWeights[exIndex][repIndex][0] = 0
+    }
     setRepsWeights([...repsWeights])
   }
 
@@ -40,29 +50,36 @@ function CreateWorkout({jwt}) {
   }
 
   function handleRepRemove(exIndex){
+    // repsWeights[exIndex][repIndex]
+    // setExercises([...repsWeights])
     repsWeights[exIndex].splice(repsWeights[exIndex].length - 1, 1)
     setRepsWeights([...repsWeights])
   }
 
   function handleSubmit(){
-    var myDate = new Date()
-    let exerciseObject = {}
+    if(exercise.some((i) => {return i === ""})) {    
+      setErrorMessage("Please choose an exercise")
+    } else {
+      var myDate = new Date()
+      let exerciseObject = {}
 
-    exercise.map((exe, index) => {
-      exerciseObject[exe] = repsWeights[index]
-    })
+      exercise.map((exe, index) => {
+        exerciseObject[exe] = repsWeights[index]
+      })
 
-    let payloadObject = {
-      date: `${myDate.getFullYear()}-${myDate.getMonth()+1}-${myDate.getDate()}`,
-      exercises: JSON.stringify(exerciseObject)
-    }
-
-    axios.post(`https://fitr-backend.herokuapp.com/workouts`, payloadObject, {
-      headers: {
-        'Authorization': `Bearer ${jwt}`
+      let payloadObject = {
+        date: `${myDate.getFullYear()}-${myDate.getMonth()+1}-${myDate.getDate()}`,
+        exercises: JSON.stringify(exerciseObject)
       }
-    })
-    .then(setIsCreated(true))
+
+      axios.post(`https://fitr-backend.herokuapp.com/workouts`, payloadObject, {
+        headers: {
+          'Authorization': `Bearer ${jwt}`
+        }
+      })
+      .then(setIsCreated(true))
+      .catch((e) => setErrorMessage(`An error has occurred (${e}). Please reload the page and try again.`))
+    }
   }
 
   return (
