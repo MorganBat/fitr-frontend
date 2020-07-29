@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 
-// const EditWorkout = ({workoutId, jwt}) => {
-    // Change props for development. Change back before deploying!!!!
-    const EditWorkout = ({workoutId}) => {
+const EditWorkout = ({workoutId, jwt}) => {
 
     const [workoutExercises, setWorkoutExercises] = useState('')
     const [workoutDate, setWorkoutDate] = useState("")
@@ -12,12 +10,10 @@ import {Link, Redirect} from 'react-router-dom'
     const [isEdited, setIsEdited] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
-    // const token = jwt
-    // Changed to static token for development. Change back before deploying!!!
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNjg3MTEsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.CO610caidLmrezYPjcDfl_56b1ThNvn5VwOBtcAznCs'
+    const token = jwt
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/workouts/${workoutId}`, {
+        axios.get(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }    
@@ -32,9 +28,9 @@ import {Link, Redirect} from 'react-router-dom'
     }, [])
 
     function editWorkout() {
-        axios.put(`http://localhost:3001/workouts/${workoutId}`,{
+        axios.put(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
             workout: {
-                exercises: workoutExercises,
+                exercises: JSON.stringify(workoutExercises),
                 date: workoutDate,
                 user_id: workoutUser,
                 id: workoutId,
@@ -97,20 +93,6 @@ return (
         ))}
         <button onClick={editWorkout}> Submit </button>
         <Link to={`/workouts/${workoutId}`}>Back</Link>
-        {Object.keys(workoutExercises).map((item, i) => (
-                <div className="exercise" key={i}>
-                    {item}:
-                     {workoutExercises[`${item}`].map((repsAndWeights) => {
-                        let reps = String(repsAndWeights[0])
-                        let weight = String(repsAndWeights[1])
-                        console.log(reps)
-                        return(<li className="repsAndWeights">
-                            {reps} reps, {weight} kg
-                        </li>)
-                    })}
-                </div>
-            ))}
-
         {isEdited && <Redirect to="/" />}
     </div>
 )
