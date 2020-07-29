@@ -2,6 +2,8 @@ body {
     background-color: #182936;
     color: #F4F5F5;
     width: 100%;
+    margin: auto;
+    padding: auto;
 }
 
 /* .grid-container {
@@ -15,6 +17,27 @@ body {
 h2 {
         color: #71816D;
 } */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: baseline; */
+    width: 100%;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+}
+
+#navBarEmail{
+    /* display: flex; */
+    align-self: flex-start;
+}
+
+#logOutButton{
+    /* display: flex; */
+    align-self: flex-end;
+}
 
 .workout {
     list-style: none;
