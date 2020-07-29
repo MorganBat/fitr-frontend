@@ -4,12 +4,16 @@ body {
 }
 
 
-h1 {
-    color:#36A7FF;
+/* h1 {
+    color:#71816D;
 }
 
 h2 {
-    color: #36A7FF
+        color: #71816D;
+} */
+
+.workout {
+    list-style: none;
 }
 
 .showExercises {

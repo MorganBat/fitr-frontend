@@ -39,7 +39,7 @@ const [errorMessage, setErrorMessage] = useState("")
             value={userPassword}
             onChange={e => setPassword(e.target.value)}
         />
-        <button onClick={createUser}> Signup </button>
+        <button onClick={createUser} class="btn btn-success"> Signup </button>
         {isCreated && <Redirect to="/Login" />}
     </div>
     )
