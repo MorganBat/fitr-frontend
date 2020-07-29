@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import DeleteWorkout from './DeleteWorkout'
 
-const ShowWorkout = (props, jwt) => {
+const ShowWorkout = ({workoutId, jwt}) => {
 
     const [workout, setWorkout] = useState('')
     const [workoutDate, setWorkoutDate] = useState('')
@@ -13,7 +13,7 @@ const ShowWorkout = (props, jwt) => {
 
     // ${props.workoutId}
     useEffect(() => {
-        axios.get(`https://fitr-backend.herokuapp.com/workouts/${props.workoutId}`,{
+        axios.get(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }   
@@ -29,7 +29,8 @@ const ShowWorkout = (props, jwt) => {
 
     return (
         <> 
-            {!props.jwt && <Redirect to="/Login" />}
+            {console.log(jwt)}
+            {/* {!token && <Redirect to="/Login" />} */}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
             {Object.keys(workout).map((item, i) => (
@@ -45,9 +46,11 @@ const ShowWorkout = (props, jwt) => {
                     })}
                 </div>
             ))}
-            <Link to={`/workouts/${props.workoutId}/edit`}> EDIT </Link>
-            <DeleteWorkout workoutId={props.workoutId}/>
-            <Link to="/workouts">View all</Link>
+            <span className="navLinks">
+                <Link to={`/workouts/${workoutId}/edit`}><button type="button" class="btn btn-warning"> EDIT </button></Link>
+                <DeleteWorkout workoutId={workoutId}/>
+                <Link to="/workouts"><button class="btn btn-link">View all</button></Link>
+            </span>
         </>
     )
 }
