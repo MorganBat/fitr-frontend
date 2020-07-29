@@ -5,7 +5,8 @@ import ViewWorkouts from './components/ViewWorkouts'
 import ShowWorkout from './components/ShowWorkout'
 import EditWorkout from './components/EditWorkout'
 import Signup from './components/Signup'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './components/App.css'
 
 const App = () => {
 

@@ -32,7 +32,7 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {!jwt && <Redirect to="/" />}
-            <h1>My workouts - user </h1>
+            <h1>All Workouts</h1>
             {errorMessage && <h3>{errorMessage}</h3>}
             {/* <Link to={}>Add a new workout</Link> */}
             {workouts.map((workout, index) => (
