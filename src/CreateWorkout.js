@@ -41,7 +41,7 @@ function CreateWorkout({jwt}) {
     if(e.target.value !== "") { 
       newRepsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
     } else {
-     newRepsWeights[exIndex][repIndex][0] = 0
+      newRepsWeights[exIndex][repIndex][1] = 0
     }
     setRepsWeights([...newRepsWeights])
   }
@@ -121,7 +121,7 @@ function CreateWorkout({jwt}) {
       <hr/>
 
       <button onClick={handleSubmit}>Submit</button>
-      {/* {isCreated && <Redirect to="/"/>} */}
+      {isCreated && <Redirect to="/"/>}
     </div>
   );
 }
