@@ -14,6 +14,7 @@ function CreateWorkout({jwt}) {
     setExercises([...exercise, ""])
     setRepsWeights([...repsWeights, [[0,0],[0,0],[0,0],[0,0]]])
   }
+
   function handleAddRep(index) {
     const newRepsWeights = [...repsWeights]
     newRepsWeights[index].push([0,0])
@@ -38,38 +39,50 @@ function CreateWorkout({jwt}) {
 
   function handleWeightChange(e, exIndex, repIndex) {
     const newRepsWeights = [...repsWeights]
+
     if(e.target.value !== "") { 
       newRepsWeights[exIndex][repIndex][1] = parseInt(e.target.value)
     } else {
       newRepsWeights[exIndex][repIndex][1] = 0
     }
+
     setRepsWeights([...newRepsWeights])
   }
 
   function handleExerciseRemove(index){
     const newExercise = [...exercise]
     const newRepsWeights = [...repsWeights]
+
     newExercise.splice(index, 1)
     newRepsWeights.splice(index, 1)
+
     setRepsWeights([...newRepsWeights])
     setExercises([...newExercise])
   }
 
   function handleRepRemove(exIndex){
     const newRepsWeights = [...repsWeights]
+
     newRepsWeights[exIndex].splice(newRepsWeights[exIndex].length - 1, 1)
+
     setRepsWeights([...newRepsWeights])
   }
 
   function handleSubmit(){
-    if(exercise.some((i) => {return i === ""})) {    
+
+    if(exercise.some((i) => {return i === ""})) {   
+
       setErrorMessage("Please choose an exercise")
+
     } else {
+
       var myDate = new Date()
       let exerciseObject = {}
 
       exercise.map((exe, index) => {
+
         exerciseObject[exe] = repsWeights[index]
+        
       })
 
       let payloadObject = {
@@ -106,9 +119,9 @@ function CreateWorkout({jwt}) {
                 {repsWeights[exIndex].map((rep, repIndex) => (
                   <>
                   <label>reps</label>
-                  <input class="rep" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
+                  <input size="3" class="rep" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
                   <label>weight</label>
-                  <input class="rep" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
+                  <input size="3" class="rep" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
                   </>
                 ))}
               <button onClick={()=> handleAddRep(exIndex)}>Add rep</button>
