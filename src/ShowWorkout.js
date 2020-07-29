@@ -9,7 +9,9 @@ const ShowWorkout = (props, jwt) => {
     const [workoutDate, setWorkoutDate] = useState('')
     const [errorMessage, setErrorMessage]= useState('')
 
-    const token = jwt
+    // const token = jwt
+    // Changed to static token for development. Change back before deploying!!!
+    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNjg3MTEsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.CO610caidLmrezYPjcDfl_56b1ThNvn5VwOBtcAznCs'
 
     // ${props.workoutId}
     useEffect(() => {
@@ -40,7 +42,7 @@ const ShowWorkout = (props, jwt) => {
                         let reps = String(repsAndWeights[0])
                         let weight = String(repsAndWeights[1])
                         console.log(reps)
-                        return(<li classname="repsAndWeights">
+                        return(<li className="repsAndWeights">
                             {reps} reps, {weight} kg
                         </li>)
                     })}
