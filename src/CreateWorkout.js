@@ -89,6 +89,7 @@ function CreateWorkout({jwt}) {
 
   return (
     <div>
+      {!jwt && <Redirect to="/login"/>}
       <h1>Record a workout</h1>
       {errorMessage && <h3>{errorMessage}</h3>}
         {exercise.map((ex,exIndex) =>(
