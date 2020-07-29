@@ -97,7 +97,7 @@ function CreateWorkout({jwt}) {
               
               <select onChange={(e) => handleExerciseChange(e, exIndex) }>
                 <option></option>
-                {allExercises.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
+                {exerciseList.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
               </select>
 
               <button onClick={() => handleExerciseRemove(exIndex)}>Remove</button>
@@ -121,7 +121,7 @@ function CreateWorkout({jwt}) {
       <hr/>
 
       <button onClick={handleSubmit}>Submit</button>
-      {isCreated && <Redirect to="/"/>}
+      {isCreated && <Redirect to="/workouts"/>}
     </div>
   );
 }
