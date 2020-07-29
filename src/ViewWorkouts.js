@@ -1,8 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
-
-
+import { format } from 'date-fns'
 
 const ViewWorkouts = ({jwt}) => {
 
@@ -32,13 +31,13 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {!jwt && <Redirect to="/" />}
-            <h1>My workouts - user </h1>
+            <h1>All Workouts</h1>
             {errorMessage && <h3>{errorMessage}</h3>}
             {/* <Link to={}>Add a new workout</Link> */}
-            {workouts.map((workout, index) => (
+            {workouts.map((workout) => (
                 <>
-                <li><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
-                <li>{workout.exercises}</li>
+                <li className="workout"><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
+                {/* <li>{Object.keys(workout.exercises)}</li> */}
                 </>
             ))}
 
