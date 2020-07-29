@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const EditWorkout = ({workoutId, jwt}) => {
 
-    const [workout, setWorkout] = useState("")
+    const [workoutExercises, setWorkoutExercises] = useState('')
     const [workoutDate, setWorkoutDate] = useState("")
     const [workoutUser, setWorkoutUser] = useState("")
     const [isEdited, setIsEdited] = useState(false)
@@ -20,8 +20,7 @@ const EditWorkout = ({workoutId, jwt}) => {
         })
         .then(res => {
             setWorkoutDate(res.data.date)
-            setWorkout(res.data.exercises)
-            setWorkoutUser(res.data.user)
+            setWorkoutExercises(JSON.parse(res.data.exercises))
         })
         .catch(e => {
             setErrorMessage("el problemo")
@@ -31,9 +30,10 @@ const EditWorkout = ({workoutId, jwt}) => {
     function editWorkout() {
         axios.put(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
             workout: {
-                exercises: workout,
+                exercises: JSON.stringify(workoutExercises),
                 date: workoutDate,
-                user: workoutUser
+                user_id: workoutUser,
+                id: workoutId,
             }    
         }, {
                 headers: {
@@ -41,24 +41,55 @@ const EditWorkout = ({workoutId, jwt}) => {
                 }   
             }
         )
-        .then(setIsEdited(true))
+        .then(
+            setIsEdited(true),
+            console.log(workoutExercises),
+        )
     }
 
 return (
     <div>
         {errorMessage && <h3>{errorMessage}</h3>}
         <input
-        placeholder="Exercises"
-        value={workout}
-        onChange={e => setWorkout(e.target.value)}
-    />
-    <input
-        placeholder="Date"
-        value={workoutDate}
-        onChange={e => setWorkoutDate(e.target.value)}
-    />
-    <button onClick={editWorkout}> Login </button>
-
+            placeholder="Date"
+            type="date"
+            value={workoutDate}
+            onChange={e => setWorkoutDate(e.target.value)}
+        />
+        {Object.keys(workoutExercises).map((item, i) => (
+            <div className="exercise" key={i}>
+                {item}:
+                {workoutExercises[`${item}`].map((repsAndWeights, j) => {
+                    let reps = String(repsAndWeights[0])
+                    let weight = String(repsAndWeights[1])
+                    return(<div className="repsAndWeights">
+                        <input
+                            value={reps}
+                            size="2"
+                            // type="number"
+                            onChange={e => {
+                                const newWorkoutExercises = {...workoutExercises}
+                                newWorkoutExercises[item][j][0] = parseInt(e.target.value)
+                                setWorkoutExercises(newWorkoutExercises)
+                            }}                            
+                        />reps                  
+                        <input
+                            value={weight}
+                            size="3"
+                            // type="number"
+                            onChange={e => {
+                                const newWorkoutExercises = {...workoutExercises}
+                                newWorkoutExercises[item][j][1] = parseInt(e.target.value)
+                                setWorkoutExercises(newWorkoutExercises)
+                                console.log(workoutExercises)
+                            }}
+                        />kg
+                    </div>)
+                })}
+            </div>
+        ))}
+        <button onClick={editWorkout}> Submit </button>
+        <Link to={`/workouts/${workoutId}`}>Back</Link>
         {isEdited && <Redirect to="/" />}
     </div>
 )
