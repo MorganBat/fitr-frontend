@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {Redirect} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 const Signup = () => {
 
@@ -24,23 +24,25 @@ const [errorMessage, setErrorMessage] = useState("")
     }
 
     return (
-        <div>
-        <h1>SIGNUP</h1>
-        <div>{errorMessage}</div>
-        <input
-            placeholder="Email"
-            type="text"
-            value={userEmail}
-            onChange={e => setEmail(e.target.value)}
-        />
-        <input
-            placeholder="Password"
-            type="password"
-            value={userPassword}
-            onChange={e => setPassword(e.target.value)}
-        />
-        <button onClick={createUser} class="btn btn-success"> Signup </button>
-        {isCreated && <Redirect to="/Login" />}
+        <div className="grid-container">
+            <h1>SIGNUP</h1>
+            <div>{errorMessage}</div>
+            <input
+                placeholder="Email"
+                type="text"
+                value={userEmail}
+                onChange={e => setEmail(e.target.value)}
+            />
+            <input
+                placeholder="Password"
+                type="password"
+                value={userPassword}
+                onChange={e => setPassword(e.target.value)}
+            />
+            <button onClick={createUser} class="btn btn-success"> Signup </button>
+            <br />
+            <Link to="/login">Already have an account? Login</Link>
+            {isCreated && <Redirect to="/Login" />}
     </div>
     )
 

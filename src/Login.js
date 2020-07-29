@@ -36,8 +36,8 @@ return (
         onChange={e => setUserPassword(e.target.value)}
     />
     <button onClick={getToken} class="btn btn-success"> Login </button>
-
-    <Link to="/signup"><button class="btn btn-info">Register Now</button></Link>
+    <br />
+    <Link to="/signup">Need an Account? Register Now</Link>
 
     {loggedIn && <Redirect to="/workouts" />}
     </div>

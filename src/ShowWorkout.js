@@ -21,6 +21,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
         })
         .then(res => {
             setWorkoutDate(res.data.date)
+            // console.log(format(res.data.date, "do MMM yyyy"))
             setWorkout(JSON.parse(res.data.exercises))
         })
         .catch (e => 
@@ -30,8 +31,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
 
     return (
         <> 
-            {console.log(jwt)}
-            {/* {!token && <Redirect to="/Login" />} */}
+            {!token && <Redirect to="/Login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
             {Object.keys(workout).map((item, i) => (
@@ -40,7 +40,6 @@ const ShowWorkout = ({workoutId, jwt}) => {
                      {workout[`${item}`].map((repsAndWeights) => {
                         let reps = String(repsAndWeights[0])
                         let weight = String(repsAndWeights[1])
-                        console.log(reps)
                         return(<li className="repsAndWeights">
                             {reps} reps, {weight} kg
                         </li>)

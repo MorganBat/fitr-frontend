@@ -1,8 +1,12 @@
 body {
     background-color: #182936;
     color: #F4F5F5;
+    width: 100%;
 }
 
+/* .grid-container {
+    display: grid;
+} */
 
 /* h1 {
     color:#71816D;
