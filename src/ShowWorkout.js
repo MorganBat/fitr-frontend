@@ -9,14 +9,11 @@ const ShowWorkout = (props, jwt) => {
     const [workoutDate, setWorkoutDate] = useState('')
     const [errorMessage, setErrorMessage]= useState('')
 
-    // const token = jwt
-    // Changed to static token for development. Change back before deploying!!!
-    const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNjg3MTEsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.CO610caidLmrezYPjcDfl_56b1ThNvn5VwOBtcAznCs'
+    const token = jwt
 
     // ${props.workoutId}
     useEffect(() => {
-        // Changed location of request for testing purposes
-        axios.get(`http://localhost:3001/workouts/${props.workoutId}`,{
+        axios.get(`https://fitr-backend.herokuapp.com/workouts/${props.workoutId}`,{
             headers: {
                 'Authorization': `Bearer ${token}`
             }   

@@ -63,9 +63,6 @@ return (
                     let reps = String(repsAndWeights[0])
                     let weight = String(repsAndWeights[1])
                     return(<div className="repsAndWeights">
-                        {/* Below line to be removed before deployment. For dev purposes */}
-                        {/* item = {item}, 
-                        j = {j} */}
                         <input
                             value={reps}
                             size="2"
@@ -75,7 +72,7 @@ return (
                                 newWorkoutExercises[item][j][0] = parseInt(e.target.value)
                                 setWorkoutExercises(newWorkoutExercises)
                             }}                            
-                        />reps(index 0)                  
+                        />reps                  
                         <input
                             value={weight}
                             size="3"
@@ -86,7 +83,7 @@ return (
                                 setWorkoutExercises(newWorkoutExercises)
                                 console.log(workoutExercises)
                             }}
-                        />kg(index 1)
+                        />kg
                     </div>)
                 })}
             </div>
