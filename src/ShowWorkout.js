@@ -3,7 +3,7 @@ import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import DeleteWorkout from './DeleteWorkout'
 
-const ShowWorkout = (props) => {
+const ShowWorkout = (props, jwt) => {
 
     const [workout, setWorkout] = useState('')
     const [workoutDate, setWorkoutDate] = useState('')
