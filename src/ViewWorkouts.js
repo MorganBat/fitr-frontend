@@ -8,7 +8,6 @@ const ViewWorkouts = ({jwt}) => {
     const [workouts, setWorkouts] = useState([])
     const [errorMessage, setErrorMessage]= useState("")
     
-
     const token = {jwt}
 
     useEffect(() => {
@@ -30,7 +29,7 @@ const ViewWorkouts = ({jwt}) => {
 
     return (
         <div>
-            {!jwt && <Redirect to="/" />}
+            {!jwt && <Redirect to="/login" />}
             <h1>All Workouts</h1>
             {errorMessage && <h3>{errorMessage}</h3>}
             {/* <Link to={}>Add a new workout</Link> */}
