@@ -110,37 +110,37 @@ function CreateWorkout({jwt}) {
             <>
             <div key={exIndex}>
               <div className="dropdown-container">
-                <select onChange={(e) => handleExerciseChange(e, exIndex) }>
+                <select className="dropdown-selector" onChange={(e) => handleExerciseChange(e, exIndex) }>
                   <option></option>
                   {exerciseList.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
                 </select>
-                <button onClick={() => handleExerciseRemove(exIndex)}>Remove Exercise</button>
+                <button class="btn btn-light btn-sm" onClick={() => handleExerciseRemove(exIndex)}>Remove Exercise</button>
               </div>
               
               
                 {repsWeights[exIndex].map((rep, repIndex) => (
                   <div className="repWeight-container">
-                    <label>reps</label>
-                    <input size="3" className="repInput" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
-                    <label>weight</label>
-                    <input size="3" className="weightInput" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
+                    <label>reps  </label>
+                    <input min="0" size="3" className="repInput" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
+                    <label>  weight</label>
+                    <input min="0" size="3" className="weightInput" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
                   </div>
                 ))}
                 <div className="rep-buttons-containers">
-                 <div className="rep-buttons"><button onClick={()=> handleAddRep(exIndex)}>Add rep</button></div>
-                 <div className="rep-buttons"><button onClick={()=> handleRepRemove(exIndex)}>Remove rep</button></div>
+                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleAddRep(exIndex)}>Add rep</button></div>
+                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleRepRemove(exIndex)}>Remove rep</button></div>
                 </div>
             </div>
             </>
          ))}
       <div className="add-exercise-button-container">
-        <button onClick={addExercise}>Add Exercise</button>
+        <button class="btn btn-light btn-sm" onClick={addExercise}>Add Exercise</button>
       </div>
       <hr/>
 
 
-      <div className="submit-button-container"><button onClick={handleSubmit}>Submit</button></div>
-      <Link to="/workouts"><button class="btn btn-info">Go Back</button></Link>
+      <div className="submit-button-container"><button class="btn btn-light" onClick={handleSubmit}>Submit</button> <Link to="/workouts"><button class="btn btn-info">Go Back</button></Link></div>
+      
       {isCreated && <Redirect to="/workouts"/>}
     </div>
   );
