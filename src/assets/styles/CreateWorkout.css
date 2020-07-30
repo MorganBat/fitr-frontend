@@ -1,0 +1,25 @@
+.repInput {
+    width: 50px;
+}
+
+.weightInput {
+    width: 70px;
+}
+
+.dropdown-container, .repWeight-container, .h2-container, .rep-buttons-containers, .add-exercise-button-container, .submit-button-container {
+    margin-left: 20px;
+}
+
+.rep-buttons-containers{
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+}
+
+.rep-buttons {
+margin: 10px 10px 10px 0px;
+}
+
+.submit-button-container {
+
+}
