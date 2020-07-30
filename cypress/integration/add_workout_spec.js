@@ -6,5 +6,6 @@ describe('The Add Workout test', () => {
       cy.contains("Login").click() // Click login button
       cy.contains("Add a new Workout").click() // Clicks the create workout link
       cy.contains("Add Exercise").click() // Clicks to add a new exercises
+      cy.contains("Go Back").click() // Returns to main page
     })
   })
