@@ -29,7 +29,6 @@ const [userName, setUserName] = useState("")
 
     return (
             <>
-                <NavBar />
                     <div className="sign-up-background">
                         <div className="sign-up-flex-container">
                         {/* <div></div> */}
