@@ -1,0 +1,19 @@
+.sign-up-flex-container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.sign-up-details-container {
+  height: 100%;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up-background {
+  background-color: #81B622;
+}

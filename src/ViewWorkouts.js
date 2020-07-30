@@ -31,14 +31,13 @@ const ViewWorkouts = ({jwt}) => {
             {!jwt && <Redirect to="/login" />}
             <h1>All Workouts</h1>
             {errorMessage && <h3>{errorMessage}</h3>}
-            {/* <Link to={}>Add a new workout</Link> */}
             {workouts.map((workout) => (
                 <>
                 <li className="workout"><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
                 {/* <li>{Object.keys(workout.exercises)}</li> */}
                 </>
             ))}
-
+            <Link to="/workouts/create"><button class="btn btn-primary">Add a new Workout</button></Link>
         </div>
     )
 }
