@@ -34,6 +34,7 @@ const ViewWorkouts = ({jwt}) => {
             <h2>All Workouts</h2>
             </div>
             {errorMessage && <h3>{errorMessage}</h3>}
+
             <div className="workouts-container">
                 {workouts.map((workout) => (
                     <>
@@ -45,6 +46,7 @@ const ViewWorkouts = ({jwt}) => {
             <div className="nav-container">
             <Link to="/workouts/create"><button class="btn btn-primary">Add a new Workout</button></Link>
             </div>
+
         </div>
     )
 }

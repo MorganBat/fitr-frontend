@@ -32,6 +32,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
         <> 
             {!token && <Redirect to="/login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
+
             <div className="show-grid-container">
             <div className="h2-container">
                 <h2 className="show-workout-date">{workoutDate}</h2>
@@ -60,6 +61,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
                     <div><Link to="/workouts"><button class="btn btn-light">Back</button></Link></div>
                 </span>
             </div>
+
         </>
     )
 }

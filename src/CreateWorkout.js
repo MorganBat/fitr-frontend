@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom'
+import {Redirect, Link} from 'react-router-dom'
 import exerciseList from './resources/exerciseList'
 import './assets/styles/CreateWorkout.css'
 
@@ -138,7 +138,9 @@ function CreateWorkout({jwt}) {
       </div>
       <hr/>
 
+
       <div className="submit-button-container"><button onClick={handleSubmit}>Submit</button></div>
+      <Link to="/workouts"><button class="btn btn-info">Go Back</button></Link>
       {isCreated && <Redirect to="/workouts"/>}
     </div>
   );
