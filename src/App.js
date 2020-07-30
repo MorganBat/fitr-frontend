@@ -12,10 +12,7 @@ import CreateWorkout from './CreateWorkout'
 
 const App = () => {
 
-    // Token is only set to make testing easier. For deployment change the default state to null.
-    // const [userToken, setUserToken] = useState('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTYwNzg3MjEsInN1YiI6NCwiZW1haWwiOiJ0ZXN0NEBnbWFpbC5jb20ifQ.uQynHLy1Gtt099l1cclDJ56WHdni_Ekq763iN_JJ68E')
     const [userToken, setUserToken] = useState(null)
-    // const [loggedIn, setLoggedIn] = useState(false)
 
     return (
         <> 

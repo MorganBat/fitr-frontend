@@ -12,7 +12,6 @@ const ShowWorkout = ({workoutId, jwt}) => {
 
     const token = jwt
 
-    // ${props.workoutId}
     useEffect(() => {
         axios.get(`https://fitr-backend.herokuapp.com/workouts/${workoutId}`,{
             headers: {
@@ -21,7 +20,6 @@ const ShowWorkout = ({workoutId, jwt}) => {
         })
         .then(res => {
             setWorkoutDate(res.data.date)
-            // console.log(format(res.data.date, "do MMM yyyy"))
             setWorkout(JSON.parse(res.data.exercises))
         })
         .catch (e => 
@@ -31,7 +29,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
 
     return (
         <> 
-            {!token && <Redirect to="/Login" />}
+            {!token && <Redirect to="/login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <h2>{workoutDate}</h2>
             {Object.keys(workout).map((item, i) => (

@@ -9,7 +9,7 @@ const NavBar = ({logOut}) => {
 
     return(
         <div className="navbar-container">
-            <h1>Fitr</h1>
+            <h1 className="title">Fitr</h1>
             <span id = "logOutButton">
                 <button onClick={clickLogOut} class="btn btn-light btn-lg">Log Out</button>
             </span>

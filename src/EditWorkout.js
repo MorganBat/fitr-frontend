@@ -67,7 +67,8 @@ return (
                         <input
                             value={reps}
                             size="2"
-                            // type="number"
+                            type="number"
+                            class="repInput"
                             onChange={e => {
                                 const newWorkoutExercises = {...workoutExercises}
                                 newWorkoutExercises[item][j][0] = parseInt(e.target.value)
@@ -77,7 +78,8 @@ return (
                         <input
                             value={weight}
                             size="3"
-                            // type="number"
+                            type="number"
+                            class="weightInput"
                             onChange={e => {
                                 const newWorkoutExercises = {...workoutExercises}
                                 newWorkoutExercises[item][j][1] = parseInt(e.target.value)

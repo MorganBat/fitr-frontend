@@ -120,9 +120,9 @@ function CreateWorkout({jwt}) {
                 {repsWeights[exIndex].map((rep, repIndex) => (
                   <>
                   <label>reps</label>
-                  <input size="3" class="rep" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
+                  <input size="3" class="repInput" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
                   <label>weight</label>
-                  <input size="3" class="rep" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
+                  <input size="3" class="weightInput" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
                   </>
                 ))}
               <button onClick={()=> handleAddRep(exIndex)}>Add rep</button>
