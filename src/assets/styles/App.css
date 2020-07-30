@@ -2,6 +2,7 @@
 
 h1 {
     font-family: 'Montserrat', sans-serif;
+    color: #000000
 }
 
 h2 {
@@ -9,7 +10,7 @@ h2 {
 }
 
 body {
-    background-color: #182936;
+    background-color: #81B622;
     color: #F4F5F5;
     width: 100%;
     margin: auto;
@@ -20,47 +21,3 @@ body {
     min-width: 100vw;
 }
 
-/* .grid-container {
-    display: grid;
-} */
-
-.root {
-    min-width: 100vw;
-    min-height: 100vh;
-}
-
-.navbar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    margin: auto;
-    padding: auto;
-    text-align: center;
-}
-
-#navBarName{
-    /* display: flex; */
-    align-self: flex-start;
-}
-
-#logOutButton{
-    /* display: flex; */
-    align-self: flex-end;
-}
-
-.workout {
-    list-style: none;
-}
-
-.showExercises {
-
-}
-
-.repsAndWeights {
-    
-}
-
-.navLinks {
-    display: flex;
-}

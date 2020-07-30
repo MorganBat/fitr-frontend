@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {Redirect, Link} from 'react-router-dom'
 import exerciseList from './resources/exerciseList'
-import NavBar from './NavBar'
+import './assets/styles/CreateWorkout.css'
 
 function CreateWorkout({jwt}) {
 
@@ -104,38 +104,42 @@ function CreateWorkout({jwt}) {
   return (
     <div>
       {!jwt && <Redirect to="/login"/>}
-      <h1>Record a workout</h1>
+      <div className="h2-container"><h2>Record a workout</h2></div>
       {errorMessage && <h3>{errorMessage}</h3>}
         {exercise.map((ex,exIndex) =>(
             <>
             <div key={exIndex}>
+              <div className="dropdown-container">
+                <select onChange={(e) => handleExerciseChange(e, exIndex) }>
+                  <option></option>
+                  {exerciseList.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
+                </select>
+                <button onClick={() => handleExerciseRemove(exIndex)}>Remove Exercise</button>
+              </div>
               
-              <select onChange={(e) => handleExerciseChange(e, exIndex) }>
-                <option></option>
-                {exerciseList.map((element) => (element.language === 2 && element.name !== "" && <option>{element.name}</option>))}
-              </select>
-
-              <button onClick={() => handleExerciseRemove(exIndex)}>Remove</button>
               
                 {repsWeights[exIndex].map((rep, repIndex) => (
-                  <>
-                  <label>reps</label>
-                  <input size="3" class="repInput" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
-                  <label>weight</label>
-                  <input size="3" class="weightInput" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
-                  </>
+                  <div className="repWeight-container">
+                    <label>reps</label>
+                    <input size="3" className="repInput" type="number" onChange={(e) => handleRepChange(e, exIndex, repIndex)}/>
+                    <label>weight</label>
+                    <input size="3" className="weightInput" type="number" onChange={(e) => handleWeightChange(e, exIndex, repIndex)}/>
+                  </div>
                 ))}
-              <button onClick={()=> handleAddRep(exIndex)}>Add rep</button>
-              <button onClick={()=> handleRepRemove(exIndex)}>Remove rep</button>
+                <div className="rep-buttons-containers">
+                 <div className="rep-buttons"><button onClick={()=> handleAddRep(exIndex)}>Add rep</button></div>
+                 <div className="rep-buttons"><button onClick={()=> handleRepRemove(exIndex)}>Remove rep</button></div>
+                </div>
             </div>
             </>
          ))}
-       
-      <button onClick={addExercise}>Add Exercise</button>
-
+      <div className="add-exercise-button-container">
+        <button onClick={addExercise}>Add Exercise</button>
+      </div>
       <hr/>
 
-      <button onClick={handleSubmit}>Submit</button>
+
+      <div className="submit-button-container"><button onClick={handleSubmit}>Submit</button></div>
       <Link to="/workouts"><button class="btn btn-info">Go Back</button></Link>
       {isCreated && <Redirect to="/workouts"/>}
     </div>

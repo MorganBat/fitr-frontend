@@ -16,7 +16,7 @@ const App = () => {
 
     return (
         <> 
-        {userToken && <NavBar logOut={res => setUserToken(res)} />}
+        <NavBar logOut={res => setUserToken(res)} jwt={userToken}/>
         <div>
             <BrowserRouter>
                 <Route exact path="/" component={Signup} />
