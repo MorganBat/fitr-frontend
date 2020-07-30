@@ -19,3 +19,7 @@ justify-content: flex-start;
 .rep-buttons {
 margin: 10px 10px 10px 0px;
 }
+
+.dropdown-selector {
+    margin-right: 5px;
+}
