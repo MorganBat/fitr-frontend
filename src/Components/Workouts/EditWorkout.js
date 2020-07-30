@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
-import './assets/styles/Edit.css'
+import '../../assets/styles/Edit.css'
 
 const EditWorkout = ({workoutId, jwt}) => {
 

@@ -1,6 +1,5 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
-import './assets/styles/Navbar.css'
+import '../assets/styles/Navbar.css'
 
 const NavBar = ({logOut, jwt}) => {
 

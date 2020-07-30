@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {Redirect, Link} from 'react-router-dom'
-import exerciseList from './resources/exerciseList'
-import './assets/styles/CreateWorkout.css'
+import exerciseList from '../../resources/exerciseList'
+import '../../assets/styles/CreateWorkout.css'
 
 function CreateWorkout({jwt}) {
 

@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
-import { format } from 'date-fns'
-import './assets/styles/ViewWorkouts.css'
+import '../../assets/styles/ViewWorkouts.css'
 
 const ViewWorkouts = ({jwt}) => {
 

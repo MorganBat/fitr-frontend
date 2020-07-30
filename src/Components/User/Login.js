@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
-import './assets/styles/Login.css'
+import '../../assets/styles/Login.css'
 
 const Login = ({onLogin, setId}) => {
     const [userEmail, setUserEmail]= useState("")

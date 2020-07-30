@@ -1,16 +1,16 @@
 import React, {useState} from 'react'
 import {BrowserRouter, Route, Redirect} from 'react-router-dom'
-import Login from './Login'
+import Login from './Components/User/Login'
 import ViewWorkouts from './Components/Workouts/ViewWorkouts'
 import ShowWorkout from './Components/Workouts/ShowWorkout'
 import EditWorkout from './Components/Workouts/EditWorkout'
-import Signup from './Signup'
+import Signup from './Components/User/Signup'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/App.css'
-import NavBar from './NavBar'
+import NavBar from './Components/NavBar'
 import CreateWorkout from './Components/Workouts/CreateWorkout'
 import ShowUser from './Components/User/ShowUser'
-import Splash from './Splash'
+import Splash from './Components/Splash'
 
 const App = () => {
 

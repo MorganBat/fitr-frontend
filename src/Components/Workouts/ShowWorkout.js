@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import DeleteWorkout from './DeleteWorkout'
-import './assets/styles/ShowWorkout.css'
+import '../../assets/styles/ShowWorkout.css'
 
 const ShowWorkout = ({workoutId, jwt}) => {
 

@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
-import NavBar from './NavBar'
-import './assets/styles/Signup.css'
+// import NavBar from '../NavBar'
+import '../../assets/styles/Signup.css'
 
 const Signup = () => {
 
