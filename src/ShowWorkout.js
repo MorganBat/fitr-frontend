@@ -57,7 +57,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
                 </div>
                 <span className="navLinks">
                   <div> <Link to={`/workouts/${workoutId}/edit`}><button type="button" class="btn btn-warning">Edit</button></Link></div> 
-                    <DeleteWorkout workoutId={workoutId}/>
+                    <DeleteWorkout workoutId={workoutId} jwt={jwt}/>
                     <div><Link to="/workouts"><button class="btn btn-light">Back</button></Link></div>
                 </span>
             </div>
