@@ -12,7 +12,7 @@ const Splash = () => {
                     <h1>Welcome to Fitr</h1>
                   </div>
                   <div className="subtitle-container">
-                    <p className="subtitle">This is text</p>
+                    <p className="subtitle"></p>
                   </div>
                   <div className="button-container">
                     <div className="single-button-container">
