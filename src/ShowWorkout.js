@@ -33,29 +33,32 @@ const ShowWorkout = ({workoutId, jwt}) => {
             {!token && <Redirect to="/login" />}
             {errorMessage && <h3>{errorMessage}</h3>}
             <div className="show-grid-container">
-                <div className="show-details-container">
+            <div className="h2-container">
                 <h2 className="show-workout-date">{workoutDate}</h2>
-                {Object.keys(workout).map((item, i) => (
-                    <div className="workout-exercise-details">
-                    <ol className="showExercise" key={i}>
-                        {item}:
-                        {workout[`${item}`].map((repsAndWeights) => {
-                            let reps = String(repsAndWeights[0])
-                            let weight = String(repsAndWeights[1])
-                            return(<li className="repsAndWeights">
-                                {reps} reps, {weight} kg
-                            </li>)
-                        })}
-                    </ol>
-                    </div>
-                ))}
+            </div>
+                <div className="show-details-container">
+                        {Object.keys(workout).map((item, i) => (
+                            <div className="exercse-container">
+                                <ol className="showExercise" key={i}>
+                                    {item}:
+                                    {workout[`${item}`].map((repsAndWeights) => {
+                                        let reps = String(repsAndWeights[0])
+                                        let weight = String(repsAndWeights[1])
+                                        return(<li className="repsAndWeights">
+                                            {reps} reps, {weight} kg
+                                        </li>)
+                                    })}
+                                </ol>
+                            </div>
+                        ))}
 
-                <span className="navLinks">
-                    <Link to={`/workouts/${workoutId}/edit`}><button type="button" class="btn btn-warning">Edit</button></Link>
-                    <DeleteWorkout workoutId={workoutId}/>
-                    <Link to="/workouts"><button class="btn btn-light">View all</button></Link>
-                </span>
+                
                 </div>
+                <span className="navLinks">
+                  <div> <Link to={`/workouts/${workoutId}/edit`}><button type="button" class="btn btn-warning">Edit</button></Link></div> 
+                    <DeleteWorkout workoutId={workoutId}/>
+                    <div><Link to="/workouts"><button class="btn btn-light">Back</button></Link></div>
+                </span>
             </div>
         </>
     )
