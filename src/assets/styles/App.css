@@ -8,7 +8,58 @@ h2 {
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    background-color: #182936;
+    color: #F4F5F5;
+    width: 100%;
+    margin: auto;
+    padding: auto;
+}
 
+/* .grid-container {
+    display: grid;
+} */
 
+/* h1 {
+    color:#71816D;
+}
 
+h2 {
+        color: #71816D;
+} */
 
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+}
+
+#navBarName{
+    /* display: flex; */
+    align-self: flex-start;
+}
+
+#logOutButton{
+    /* display: flex; */
+    align-self: flex-end;
+}
+
+.workout {
+    list-style: none;
+}
+
+.showExercises {
+
+}
+
+.repsAndWeights {
+    
+}
+
+.navLinks {
+    display: flex;
+}
