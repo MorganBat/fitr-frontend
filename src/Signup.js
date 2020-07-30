@@ -68,7 +68,7 @@ const [userName, setUserName] = useState("")
                             </div>
                             <br />
                             <Link to="/login">Already have an account? Login</Link>
-                            {isCreated && <Redirect to="/Login" />}
+                            {isCreated && <Redirect to="/workouts" />}
                         </div>
                     </div>
                 </div>
