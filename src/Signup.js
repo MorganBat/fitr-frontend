@@ -31,7 +31,6 @@ const [userName, setUserName] = useState("")
             <>
                     <div className="sign-up-background">
                         <div className="sign-up-flex-container">
-                        {/* <div></div> */}
                         <div className="sign-up-details-container">
                             <h1 className="">SIGNUP</h1>
                             <div className="">

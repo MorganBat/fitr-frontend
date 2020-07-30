@@ -1,7 +1,9 @@
 import React from 'react'
 import './assets/styles/Navbar.css'
 
-const NavBar = ({logOut}) => {
+const NavBar = ({logOut, jwt}) => {
+
+    const token = jwt
 
     function clickLogOut() {
         logOut(null)
@@ -10,9 +12,12 @@ const NavBar = ({logOut}) => {
     return(
         <div className="navbar-container">
             <h1 className="title">Fitr</h1>
-            <span id = "logOutButton">
+
+            {token ? 
+            <span className="logOutButton">
                 <button onClick={clickLogOut} class="btn btn-light btn-lg">Log Out</button>
-            </span>
+            </span> : 
+            <span></span>}
         </div>
     )
 }
