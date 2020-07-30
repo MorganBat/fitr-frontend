@@ -29,6 +29,7 @@ return (
             <h1>LOG IN</h1>
             <div>
             <input
+                className="form-control"
                 placeholder="Email"
                 value={userEmail}
                 onChange={e => setUserEmail(e.target.value)}
@@ -36,12 +37,14 @@ return (
             </div>
             <div>
             <input
+                className="form-control"
                 type="password"
                 placeholder="Password"
                 value={userPassword}
                 onChange={e => setUserPassword(e.target.value)}
             />
             </div>
+            <br/>
             <button onClick={getToken} class="btn btn-success"> Login </button>
             <br />
             <Link to="/signup">Need an Account? Register Now</Link>

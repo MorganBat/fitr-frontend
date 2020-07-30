@@ -1,7 +1,8 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import { format } from 'date-fns'
+import './assets/styles/ViewWorkouts.css'
 
 const ViewWorkouts = ({jwt}) => {
 
@@ -29,15 +30,21 @@ const ViewWorkouts = ({jwt}) => {
     return (
         <div>
             {!jwt && <Redirect to="/login" />}
-            <h1>All Workouts</h1>
+            <div className="h2-container">
+            <h2>All Workouts</h2>
+            </div>
             {errorMessage && <h3>{errorMessage}</h3>}
-            {workouts.map((workout) => (
-                <>
-                <li className="workout"><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
-                {/* <li>{Object.keys(workout.exercises)}</li> */}
-                </>
-            ))}
+            <div className="workouts-container">
+                {workouts.map((workout) => (
+                    <>
+                    <li className="workout"><Link to={`workouts/${workout.id}`}>{workout.date}</Link></li>
+                    {/* <li>{Object.keys(workout.exercises)}</li> */}
+                    </>
+                ))}
+            </div>
+            <div className="nav-container">
             <Link to="/workouts/create"><button class="btn btn-primary">Add a new Workout</button></Link>
+            </div>
         </div>
     )
 }

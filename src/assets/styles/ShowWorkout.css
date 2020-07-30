@@ -1,0 +1,38 @@
+.show-grid-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .show-workout-date {
+      
+  }
+
+  .show-workout-details-container {
+    /* height: 100%; */
+    /* display: flex;
+    flex-direction: row;
+    align-items: center; */
+
+  }
+
+  .workout-exercise-details {
+      /* background-color: violet; */
+
+      /* display: flex;
+      align-items: center;
+      justify-content: center; */
+      /* margin: 40px; */
+      /*-webkit-box-shadow: 3px 3px 5px 6px #6b961b;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+      /*-moz-box-shadow:    3px 3px 5px 6px #6b961b;  /* Firefox 3.5 - 3.6 */
+      /*box-shadow:         3px 3px 5px 6px #6b961b;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+  }
+
+  .navLinks{
+      display: flex;
+      flex-direction: row;
+      margin-left: 40px;
+  }
+

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import { format } from 'date-fns'
+import './assets/styles/Edit.css'
 
 const EditWorkout = ({workoutId, jwt}) => {
 
@@ -24,7 +25,7 @@ const EditWorkout = ({workoutId, jwt}) => {
             setWorkoutExercises(JSON.parse(res.data.exercises))
         })
         .catch(e => {
-            setErrorMessage("el problemo")
+            setErrorMessage("A problem has occurred, please reload and try again.")
         })
     }, [])
 
@@ -44,12 +45,15 @@ const EditWorkout = ({workoutId, jwt}) => {
         )
         .then(
             setIsEdited(true),
+        )
+        .catch(setErrorMessage("A problem has occurred, please reload and try again.")
 
         )
     }
 
 return (
-    <div>
+    <div className="edit-container">
+        {!token && <Redirect to="/login" />}
         {errorMessage && <h3>{errorMessage}</h3>}
         <input
             placeholder="Date"
@@ -65,21 +69,21 @@ return (
                     let weight = String(repsAndWeights[1])
                     return(<div className="repsAndWeights">
                         <input
+                            className="form-control"
                             value={reps}
                             size="2"
                             type="number"
-                            class="repInput"
                             onChange={e => {
                                 const newWorkoutExercises = {...workoutExercises}
                                 newWorkoutExercises[item][j][0] = parseInt(e.target.value)
                                 setWorkoutExercises(newWorkoutExercises)
                             }}                            
-                        />reps                  
+                        /> reps                   
                         <input
+                            className="form-control"
                             value={weight}
                             size="3"
                             type="number"
-                            class="weightInput"
                             onChange={e => {
                                 const newWorkoutExercises = {...workoutExercises}
                                 newWorkoutExercises[item][j][1] = parseInt(e.target.value)
@@ -91,9 +95,10 @@ return (
                 })}
             </div>
         ))}
+        <br/>
         <div className="navLinks">
-            <button onClick={editWorkout} class="btn btn-success"> Submit </button>
-            <Link to={`/workouts/${workoutId}`}><button class="btn btn-light">Back</button></Link>
+            <div><button onClick={editWorkout} class="btn btn-success"> Submit </button></div>
+            <div><Link to={`/workouts/${workoutId}`}><button class="btn btn-light">Back</button></Link></div>
         </div>
         {isEdited && <Redirect to={`/workouts/${workoutId}`} />}
     </div>
