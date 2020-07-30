@@ -37,7 +37,7 @@ const ViewWorkouts = ({jwt}) => {
                 {/* <li>{Object.keys(workout.exercises)}</li> */}
                 </>
             ))}
-            <Link to="/workouts/create"><button class="btn btn-primary">Add a new Workout</button></Link>
+            <Link to="/createworkout"><button class="btn btn-primary">Add a new Workout</button></Link>
         </div>
     )
 }
