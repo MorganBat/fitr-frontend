@@ -68,6 +68,7 @@ return (
                     let weight = String(repsAndWeights[1])
                     return(<div className="repsAndWeights">
                         <input
+                            min="0"
                             className="form-control"
                             value={reps}
                             size="2"
@@ -79,6 +80,7 @@ return (
                             }}                            
                         /> reps                   
                         <input
+                            min="0"
                             className="form-control"
                             value={weight}
                             size="3"

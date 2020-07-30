@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import DeleteWorkout from './DeleteWorkout'
-import { format } from 'date-fns'
 import './assets/styles/ShowWorkout.css'
 
 const ShowWorkout = ({workoutId, jwt}) => {
@@ -24,7 +23,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
             setWorkout(JSON.parse(res.data.exercises))
         })
         .catch (e => 
-            setErrorMessage("There was an error")
+            setErrorMessage("There was an error. Please try again")
             )
     },[])
 
@@ -57,7 +56,7 @@ const ShowWorkout = ({workoutId, jwt}) => {
                 </div>
                 <span className="navLinks">
                   <div> <Link to={`/workouts/${workoutId}/edit`}><button type="button" class="btn btn-warning">Edit</button></Link></div> 
-                    <DeleteWorkout workoutId={workoutId}/>
+                    <DeleteWorkout workoutId={workoutId} jwt={jwt}/>
                     <div><Link to="/workouts"><button class="btn btn-light">Back</button></Link></div>
                 </span>
             </div>
