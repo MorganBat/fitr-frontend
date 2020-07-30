@@ -7,9 +7,11 @@ const Login = ({onLogin}) => {
     const [userEmail, setUserEmail]= useState("")
     const [userPassword, setUserPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
 
 async function getToken() {
+    setErrorMessage("")
     await axios.post('https://fitr-backend.herokuapp.com/user_token',{
         auth: {
             email: userEmail,
@@ -20,6 +22,9 @@ async function getToken() {
         onLogin(res.data.jwt)
         setLoggedIn(true)
     })
+    .catch(e => {
+        setErrorMessage("Incorrect details. Please try again.")
+    })
 }
 
 return (
@@ -27,6 +32,7 @@ return (
         <div className="login-flex-container">
         <div className="login-details-container">
             <h1>LOG IN</h1>
+            {errorMessage && <h3>{errorMessage}</h3>}
             <div>
             <input
                 className="form-control"
