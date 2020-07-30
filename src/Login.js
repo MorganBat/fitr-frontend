@@ -3,32 +3,42 @@ import axios from 'axios'
 import {Link, Redirect} from 'react-router-dom'
 import './assets/styles/Login.css'
 
-const Login = ({onLogin}) => {
+const Login = ({onLogin, setId}) => {
     const [userEmail, setUserEmail]= useState("")
     const [userPassword, setUserPassword] = useState("")
     const [loggedIn, setLoggedIn] = useState(false)
     const [errorMessage, setErrorMessage] = useState("")
 
+    async function getToken() {
+        setErrorMessage("")
+        await axios.post('https://fitr-backend.herokuapp.com/user_token',{
+            auth: {
+                email: userEmail,
+                password: userPassword, 
+            }
+        })
+        .then(res => {
+            onLogin(res.data.jwt)
+            setId(parseJwt(res.data.jwt).sub)
+            setLoggedIn(true)
+        })
+        .catch(e => {
+            setErrorMessage("Incorrect details. Please try again.")
+        })
+    }
 
-async function getToken() {
-    setErrorMessage("")
-    await axios.post('https://fitr-backend.herokuapp.com/user_token',{
-        auth: {
-            email: userEmail,
-            password: userPassword, 
-        }
-    })
-    .then(res => {
-        onLogin(res.data.jwt)
-        setLoggedIn(true)
-    })
-    .catch(e => {
-        setErrorMessage("Incorrect details. Please try again.")
-    })
-}
+    function parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
 
-return (
-    <>
+        return JSON.parse(jsonPayload);
+    };
+
+    return (
+        <>
         <div className="login-flex-container">
         <div className="login-details-container">
             <h1>LOG IN</h1>

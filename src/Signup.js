@@ -63,7 +63,7 @@ const [userName, setUserName] = useState("")
                                             onChange={e => setPassword(e.target.value)}
                                         />
                                     </div>
-                                    <button onClick={createUser} class="btn btn-success"> Signup </button>
+                                    <button onClick={createUser} className="btn btn-success"> Signup </button>
                                 </div>
                             </div>
                             <br />
