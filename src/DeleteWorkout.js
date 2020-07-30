@@ -19,7 +19,7 @@ const DeleteWorkout = ({workoutId, jwt}) => {
 
     return (
         <div className="deleteWorkout">
-            <button onClick={DeleteWorkout} class="btn btn-danger"> Delete </button>
+            <button onClick={DeleteWorkout} class="btn btn-danger">Delete</button>
             {isDeleted && <Redirect to="/workouts" />}
         </div>
     )
