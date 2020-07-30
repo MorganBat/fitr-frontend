@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/App.css'
 import NavBar from './NavBar'
 import CreateWorkout from './CreateWorkout'
+import Splash from './Splash'
 
 const App = () => {
 
@@ -19,7 +20,7 @@ const App = () => {
         <NavBar logOut={res => setUserToken(res)} jwt={userToken}/>
         <div>
             <BrowserRouter>
-                <Route exact path="/" component={Signup} />
+                <Route exact path="/" component={Splash} />
                 <Route exact path="/signup" component={Signup} />
                 <Route exact path='/login' render={props => <Login onLogin={jwt => setUserToken(jwt)} />} />
                 <Route exact path='/create' render={props => <CreateWorkout jwt={userToken} />} />
@@ -27,7 +28,7 @@ const App = () => {
                 <Route exact path='/workouts/:id' render={props => <ShowWorkout workoutId={props.match.params.id} jwt={userToken} />} />
                 <Route exact path='/workouts/:id/edit' render={props => <EditWorkout workoutId = {props.match.params.id} jwt={userToken} />} />
                 <Route exact path="/*">
-                    {userToken ? <Redirect to="/workouts" /> : <Redirect to="/signup" /> }
+                    {userToken ? <Redirect to="/workouts" /> : <Redirect to="/" /> }
                 </Route>
             </BrowserRouter>
         </div>
