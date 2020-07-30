@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Redirect} from 'react-router-dom'
 import Login from './Login'
 import ViewWorkouts from './ViewWorkouts'
 import ShowWorkout from './ShowWorkout'
@@ -26,6 +26,9 @@ const App = () => {
                 <Route exact path='/workouts' render={props => <ViewWorkouts jwt={userToken} />} />
                 <Route exact path='/workouts/:id' render={props => <ShowWorkout workoutId={props.match.params.id} jwt={userToken} />} />
                 <Route exact path='/workouts/:id/edit' render={props => <EditWorkout workoutId = {props.match.params.id} jwt={userToken} />} />
+                <Route exact path="/*">
+                    {userToken ? <Redirect to="/workouts" /> : <Redirect to="/signup" /> }
+                </Route>
             </BrowserRouter>
         </div>
         </>
