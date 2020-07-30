@@ -8,9 +8,9 @@ const NavBar = ({logOut}) => {
 
     return(
         <div id="navbar">
-            {/* <span id = "navBarEmail"> */}
-                {/* {userEmail} */}
-                {/* email goes here */}
+            {/* <span id = "navBarName"> */}
+                {/* {userName} */}
+                {/* Name goes here */}
             {/* </span> */}
             <span id = "logOutButton">
                 <button onClick={clickLogOut} class="btn btn-dark">Log Out</button>

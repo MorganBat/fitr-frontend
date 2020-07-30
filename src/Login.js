@@ -48,7 +48,4 @@ return (
 )
 }
 
-// const AppContext = React.createContext()
-
-// export {AppContext, userToken}
 export default Login

@@ -19,7 +19,6 @@ const ViewWorkouts = ({jwt}) => {
         })
         .then(res => {
             setWorkouts(res.data)
-            // console.log(res.data)
         })
         .catch (e => 
             setErrorMessage("There was an error")
