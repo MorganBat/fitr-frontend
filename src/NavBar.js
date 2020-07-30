@@ -1,4 +1,5 @@
 import React from 'react'
+import {Redirect} from 'react-router-dom'
 import './assets/styles/Navbar.css'
 
 const NavBar = ({logOut, jwt}) => {
@@ -16,7 +17,7 @@ const NavBar = ({logOut, jwt}) => {
             {token ? 
             <span className="logOutButton">
                 <button onClick={clickLogOut} class="btn btn-light btn-lg">Log Out</button>
-            </span> : 
+            </span> :
             <span></span>}
         </div>
     )
