@@ -44,7 +44,7 @@ const ViewWorkouts = ({jwt}) => {
                 ))}
             </div>
             <div className="nav-container">
-            <Link to="/workouts/create"><button class="btn btn-primary">Add a new Workout</button></Link>
+            <Link to="/create"><button class="btn btn-primary">Add a new Workout</button></Link>
             </div>
 
         </div>
