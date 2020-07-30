@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
 import exerciseList from './resources/exerciseList'
+import NavBar from './NavBar'
 
 function CreateWorkout({jwt}) {
 

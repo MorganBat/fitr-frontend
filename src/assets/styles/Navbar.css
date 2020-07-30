@@ -1,0 +1,26 @@
+.navbar-container{
+  display: flex;
+  justify-content: flex-end;
+  background-color: #ffffff;
+  height: 7%;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.navbar-email{
+  /* display: flex; */
+  align-self: flex-start;
+}
+
+.navbar-logout-button{
+  /* display: flex; */
+  align-self: flex-end;
+}
+
+.navbar-links {
+  display: flex;
+}
+
+.title {
+  align-self: center;
+}
