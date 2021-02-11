@@ -127,8 +127,8 @@ function CreateWorkout({jwt}) {
                   </div>
                 ))}
                 <div className="rep-buttons-containers">
-                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleAddRep(exIndex)}>Add rep</button></div>
-                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleRepRemove(exIndex)}>Remove rep</button></div>
+                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleAddRep(exIndex)}>Add Set</button></div>
+                 <div className="rep-buttons"><button class="btn btn-light btn-sm" onClick={()=> handleRepRemove(exIndex)}>Remove Set</button></div>
                 </div>
             </div>
             </>
